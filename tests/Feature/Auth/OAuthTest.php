@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use App\Actions\OAuth\LinkOAuthAccount;
+use App\Actions\OAuth\RegisterOAuthUser;
+use App\Actions\OAuth\SynchronizeOAuthAccount;
+use App\Data\OAuth\OAuthUserData;
 use App\Enums\OAuthProvider;
 use App\Models\OAuthAccount;
 use App\Models\User;
@@ -220,4 +224,87 @@ test('login and register pages render oauth component', function (): void {
         ->assertSee(value: 'Or continue with')
         ->assertSee(value: 'GitHub')
         ->assertSee(value: 'Google');
+});
+
+test('link oauth account action connects provider and updates user avatar and verified email', function (): void {
+    $user = User::factory()->create([
+        'avatar' => null,
+        'email_verified_at' => null,
+    ]);
+
+    $userData = new OAuthUserData(
+        provider: OAuthProvider::GitHub,
+        providerId: 'gh-888',
+        email: 'developer@github.com',
+        name: 'GitHub Dev',
+        nickname: 'ghdev',
+        avatar: 'https://avatars.githubusercontent.com/u/888',
+        accessToken: 'gho_token_888',
+        refreshToken: null,
+        expiresAt: null,
+    );
+
+    $action = app(LinkOAuthAccount::class);
+    $account = $action->handle(user: $user, userData: $userData, markEmailVerified: true);
+
+    expect($account->provider_id)->toBe('gh-888')
+        ->and($account->user_id)->toBe($user->id)
+        ->and($user->fresh()->avatar)->toBe('https://avatars.githubusercontent.com/u/888')
+        ->and($user->fresh()->email_verified_at)->not->toBeNull();
+});
+
+test('synchronize oauth account action updates tokens and profile metadata', function (): void {
+    $user = User::factory()->create();
+    $account = OAuthAccount::query()->create([
+        'user_id' => $user->id,
+        'provider' => OAuthProvider::Google,
+        'provider_id' => 'goog-999',
+        'provider_email' => 'old@google.com',
+        'access_token' => 'old_token',
+    ]);
+
+    $userData = new OAuthUserData(
+        provider: OAuthProvider::Google,
+        providerId: 'goog-999',
+        email: 'fresh@google.com',
+        name: 'Updated Google User',
+        nickname: null,
+        avatar: 'https://lh3.googleusercontent.com/updated',
+        accessToken: 'fresh_token',
+        refreshToken: 'fresh_refresh',
+        expiresAt: now()->addHour(),
+    );
+
+    $action = app(SynchronizeOAuthAccount::class);
+    $returnedUser = $action->handle(account: $account, userData: $userData);
+
+    expect($returnedUser->id)->toBe($user->id)
+        ->and($account->fresh()->provider_email)->toBe('fresh@google.com')
+        ->and($account->fresh()->access_token)->toBe('fresh_token')
+        ->and($account->fresh()->refresh_token)->toBe('fresh_refresh')
+        ->and($account->fresh()->avatar)->toBe('https://lh3.googleusercontent.com/updated');
+});
+
+test('register oauth user action provisions user and marks first account as admin', function (): void {
+    User::query()->delete();
+
+    $userData = new OAuthUserData(
+        provider: OAuthProvider::GitHub,
+        providerId: 'gh-first-1',
+        email: 'founder@vaulta.local',
+        name: 'Vaulta Founder',
+        nickname: 'founder',
+        avatar: null,
+        accessToken: 'gho_founder_token',
+        refreshToken: null,
+        expiresAt: null,
+    );
+
+    $action = app(RegisterOAuthUser::class);
+    $user = $action->handle(userData: $userData);
+
+    expect($user->is_admin)->toBeTrue()
+        ->and($user->email)->toBe('founder@vaulta.local')
+        ->and($user->password)->toBeNull()
+        ->and($user->hasOAuthProvider(OAuthProvider::GitHub))->toBeTrue();
 });
