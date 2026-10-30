@@ -1,0 +1,3 @@
+DotGothic16
+License: OFL-1.1 (SIL Open Font License 1.1) — Fontworks Inc.
+Bundled locally for offline/self-hosted Vaulta themes (zero runtime CDN requests).

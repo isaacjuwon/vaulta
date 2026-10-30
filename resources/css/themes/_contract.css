@@ -1,0 +1,260 @@
+/*
+ * Vaulta Theme Contract (_contract.css)
+ *
+ * Shared typography, dialog colour inheritance, .cozy-bg defaults, .totp-bar
+ * countdown skin, fixed overlay rules, and View Transitions motion rules.
+ */
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-zinc-200, currentColor);
+    }
+
+    .dark *,
+    .dark ::after,
+    .dark ::before {
+        border-color: var(--color-zinc-700, currentColor);
+    }
+
+    html {
+        color-scheme: light;
+    }
+
+    html.dark {
+        color-scheme: dark;
+    }
+
+    /* <dialog> (Flux modals) resets its text colour; inherit the active palette's. */
+    dialog {
+        color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    [data-flux-heading] {
+        font-family: var(--font-serif);
+        font-size-adjust: var(--font-ui-adjust, none);
+        letter-spacing: -0.01em;
+    }
+
+    button,
+    label,
+    th,
+    summary,
+    [role='menuitem'],
+    [role='tab'],
+    [data-flux-badge],
+    [data-flux-sidebar] a,
+    [data-flux-navlist] a {
+        font-family: var(--font-ui, inherit);
+        font-size-adjust: var(--font-ui-adjust, none);
+    }
+
+    ::selection {
+        background: color-mix(in oklab, var(--color-accent) 35%, transparent);
+    }
+}
+
+/* Modals follow the theme instead of Flux's fixed white. */
+dialog[data-modal] {
+    background-color: var(--color-zinc-50);
+}
+
+.dark dialog[data-modal] {
+    background-color: var(--color-zinc-800);
+}
+
+/* Base page & live-preview card surface. */
+.cozy-bg {
+    color: var(--color-zinc-800);
+    background-color: var(--color-zinc-50);
+}
+
+.dark .cozy-bg,
+.cozy-bg.dark {
+    color: var(--color-zinc-100);
+    background-color: var(--color-zinc-800);
+}
+
+/* TOTP 30-second countdown bar base skin. */
+.totp-bar {
+    height: 0.375rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    background-color: var(--color-zinc-200);
+}
+
+.dark .totp-bar {
+    background-color: var(--color-zinc-700);
+}
+
+.totp-fill {
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--color-accent);
+    transition: width 250ms linear;
+}
+
+/* Flux form & dark subtext refinements. */
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+.dark [data-flux-text],
+.dark [data-flux-subheading] {
+    color: var(--color-zinc-300);
+}
+
+/*
+ * View Transitions & Motion (Phase 5)
+ * Strictly gated behind prefers-reduced-motion: no-preference.
+ */
+:root {
+    --vaulta-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --vaulta-duration-fast: 120ms;
+    --vaulta-duration-base: 180ms;
+    --vaulta-duration-slide: 210ms;
+}
+
+/* Give fixed pseudo-element overlays stable view-transition names so nokia/miami/commodore never flicker. */
+html::before {
+    view-transition-name: vaulta-overlay-before;
+}
+
+html::after {
+    view-transition-name: vaulta-overlay-after;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+
+    .totp-fill {
+        transition: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: var(--vaulta-duration-base);
+        animation-timing-function: var(--vaulta-ease-out);
+    }
+
+    /* Search / filter container fade (120ms). */
+    ::view-transition-old(entry-list),
+    ::view-transition-new(entry-list) {
+        animation-duration: var(--vaulta-duration-fast);
+        animation-timing-function: ease-out;
+    }
+
+    /* Modal surface subtle scale + fade. */
+    ::view-transition-old(modal) {
+        animation: vaulta-modal-out var(--vaulta-duration-fast) var(--vaulta-ease-out) both;
+    }
+
+    ::view-transition-new(modal) {
+        animation: vaulta-modal-in var(--vaulta-duration-base) var(--vaulta-ease-out) both;
+    }
+
+    /* Directional settings navigation using Transition types (Firefox falls back to default cross-fade). */
+    html:active-view-transition-type(forward)::view-transition-old(settings-pane) {
+        animation: vaulta-slide-out-left var(--vaulta-duration-slide) var(--vaulta-ease-out) both;
+    }
+
+    html:active-view-transition-type(forward)::view-transition-new(settings-pane) {
+        animation: vaulta-slide-in-right var(--vaulta-duration-slide) var(--vaulta-ease-out) both;
+    }
+
+    html:active-view-transition-type(backward)::view-transition-old(settings-pane) {
+        animation: vaulta-slide-out-right var(--vaulta-duration-slide) var(--vaulta-ease-out) both;
+    }
+
+    html:active-view-transition-type(backward)::view-transition-new(settings-pane) {
+        animation: vaulta-slide-in-left var(--vaulta-duration-slide) var(--vaulta-ease-out) both;
+    }
+}
+
+@keyframes vaulta-modal-in {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes vaulta-modal-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes vaulta-slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes vaulta-slide-out-left {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-14px);
+    }
+}
+
+@keyframes vaulta-slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes vaulta-slide-out-right {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(14px);
+    }
+}

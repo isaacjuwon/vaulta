@@ -1,0 +1,66 @@
+/*
+ * Palette: lotus (Dark)
+ * Black DOS spreadsheet, 32x120 worksheet grid, cyan #55ffff accent, inverse-video selection.
+ */
+@layer theme {
+    [data-palette='lotus'] {
+        color-scheme: dark;
+        --font-sans: 'IBM Plex Mono', ui-monospace, monospace;
+        --font-serif: 'IBM Plex Mono', ui-monospace, monospace;
+
+        --color-zinc-100: #ffffff;
+        --color-zinc-200: #e4e4e4;
+        --color-zinc-300: #c8c8c8;
+        --color-zinc-400: #aaaaaa;
+        --color-zinc-500: #8a8a8a;
+        --color-zinc-700: #555555;
+        --color-zinc-800: #1a1a1a;
+        --color-zinc-900: #000000;
+        --color-zinc-950: #000000;
+
+        --color-accent: #55ffff;
+        --color-accent-content: #55ffff;
+        --color-accent-foreground: #000000;
+
+        --radius-xs: 0;
+        --radius-sm: 0;
+        --radius-md: 0;
+        --radius-lg: 0;
+        --radius-xl: 0;
+        --radius-2xl: 0;
+        --radius-3xl: 0;
+
+        --shadow-xs: none;
+        --shadow-sm: none;
+        --shadow-md: none;
+        --shadow-lg: none;
+        --shadow-xl: none;
+        --shadow-2xl: none;
+    }
+}
+
+[data-palette='lotus'] .cozy-bg,
+[data-palette='lotus'].cozy-bg {
+    color: var(--color-zinc-100);
+    background-color: #000000;
+    background-image:
+        repeating-linear-gradient(to bottom, transparent 0 31px, rgb(170 170 170 / 0.1) 31px 32px),
+        repeating-linear-gradient(to right, transparent 0 119px, rgb(170 170 170 / 0.1) 119px 120px);
+}
+
+[data-palette='lotus'] ::selection {
+    background: #c8c8c8;
+    color: #000000;
+}
+
+[data-palette='lotus'] .totp-bar {
+    height: 0.75rem;
+    border: 1px solid var(--color-zinc-700);
+    border-radius: 0;
+    background: var(--color-zinc-950);
+}
+
+[data-palette='lotus'] .totp-fill {
+    border-radius: 0;
+    background: repeating-linear-gradient(90deg, var(--color-accent) 0 6px, transparent 6px 8px);
+}

@@ -1,0 +1,72 @@
+/*
+ * Palette: commodore (Dark)
+ * Commodore 64 dark blue screen, light blue border frame (html::after), yellow-green accent.
+ */
+@layer theme {
+    [data-palette='commodore'] {
+        color-scheme: dark;
+        --font-sans: 'DotGothic16', ui-monospace, monospace;
+        --font-serif: 'Press Start 2P', 'DotGothic16', ui-monospace, monospace;
+        --font-ui: 'Press Start 2P', 'DotGothic16', ui-monospace, monospace;
+        --font-ui-adjust: 0.4;
+
+        --color-white: #d6d0ff;
+
+        --color-zinc-100: #d6d0ff;
+        --color-zinc-200: #c4bdff;
+        --color-zinc-300: #a59ef9;
+        --color-zinc-400: #8a82e0;
+        --color-zinc-500: #7a72d0;
+        --color-zinc-700: #6c5eb5;
+        --color-zinc-800: #352879;
+        --color-zinc-900: #2b2063;
+        --color-zinc-950: #1f1750;
+
+        --color-accent: #bfce72;
+        --color-accent-content: #bfce72;
+        --color-accent-foreground: #2b2063;
+
+        --radius-xs: 0;
+        --radius-sm: 0;
+        --radius-md: 0;
+        --radius-lg: 0;
+        --radius-xl: 0;
+        --radius-2xl: 0;
+        --radius-3xl: 0;
+
+        --shadow-xs: none;
+        --shadow-sm: none;
+        --shadow-md: none;
+        --shadow-lg: none;
+        --shadow-xl: none;
+        --shadow-2xl: none;
+    }
+}
+
+[data-palette='commodore'] .cozy-bg,
+[data-palette='commodore'].cozy-bg {
+    color: var(--color-zinc-100);
+    background-color: var(--color-zinc-800);
+    background-image: none;
+}
+
+html.dark[data-palette='commodore']::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    border: 10px solid #6c5eb5;
+    pointer-events: none;
+}
+
+[data-palette='commodore'] .totp-bar {
+    height: 0.75rem;
+    border: 1px solid var(--color-zinc-700);
+    border-radius: 0;
+    background: var(--color-zinc-950);
+}
+
+[data-palette='commodore'] .totp-fill {
+    border-radius: 0;
+    background: repeating-linear-gradient(90deg, var(--color-accent) 0 6px, transparent 6px 8px);
+}

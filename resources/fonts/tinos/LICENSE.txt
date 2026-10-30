@@ -1,0 +1,3 @@
+Tinos
+License: Apache-2.0 — Steve Matteson
+Bundled locally for offline/self-hosted Vaulta themes (zero runtime CDN requests).

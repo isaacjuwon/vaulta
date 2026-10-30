@@ -1,0 +1,72 @@
+/*
+ * Palette: amber (Dark)
+ * Amber phosphor #ffb000 CRT terminal, IBM Plex Mono + VT323, scanlines & glow.
+ */
+@layer theme {
+    [data-palette='amber'] {
+        color-scheme: dark;
+        --font-sans: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+        --font-serif: 'VT323', 'IBM Plex Mono', ui-monospace, monospace;
+        --font-ui: 'VT323', 'IBM Plex Mono', ui-monospace, monospace;
+        --font-ui-adjust: 0.52;
+
+        --crt-glow: 255 176 0;
+        --color-white: #ffc861;
+
+        --color-zinc-100: #ffc861;
+        --color-zinc-200: #ffbd45;
+        --color-zinc-300: #e9a834;
+        --color-zinc-400: #c28a26;
+        --color-zinc-500: #a07020;
+        --color-zinc-700: #4a3408;
+        --color-zinc-800: #1c1204;
+        --color-zinc-900: #120b02;
+        --color-zinc-950: #080500;
+
+        --color-accent: #ffb000;
+        --color-accent-content: #ffc233;
+        --color-accent-foreground: #120b02;
+
+        --radius-xs: 0;
+        --radius-sm: 0;
+        --radius-md: 0;
+        --radius-lg: 0;
+        --radius-xl: 0;
+        --radius-2xl: 0;
+        --radius-3xl: 0;
+
+        --shadow-xs: none;
+        --shadow-sm: none;
+        --shadow-md: none;
+        --shadow-lg: 0 0 12px rgb(var(--crt-glow) / 0.18);
+        --shadow-xl: 0 0 16px rgb(var(--crt-glow) / 0.2);
+        --shadow-2xl: 0 0 20px rgb(var(--crt-glow) / 0.22);
+    }
+}
+
+[data-palette='amber'] .cozy-bg,
+[data-palette='amber'].cozy-bg {
+    color: var(--color-zinc-100);
+    background-color: var(--color-zinc-900);
+    background-image:
+        repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgb(0 0 0 / 0.22) 3px),
+        radial-gradient(ellipse 90% 60% at 50% 0%, rgb(var(--crt-glow) / 0.09), transparent 70%);
+    text-shadow: 0 0 5px rgb(var(--crt-glow) / 0.3);
+}
+
+[data-palette='amber'] .cozy-bg svg,
+[data-palette='amber'].cozy-bg svg {
+    filter: drop-shadow(0 0 5px rgb(var(--crt-glow) / 0.5));
+}
+
+[data-palette='amber'] .totp-bar {
+    height: 0.75rem;
+    border: 1px solid var(--color-zinc-700);
+    border-radius: 0;
+    background: var(--color-zinc-950);
+}
+
+[data-palette='amber'] .totp-fill {
+    border-radius: 0;
+    background: repeating-linear-gradient(90deg, var(--color-accent) 0 6px, transparent 6px 8px);
+}

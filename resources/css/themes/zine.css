@@ -1,0 +1,72 @@
+/*
+ * Palette: zine (Light)
+ * Overrides zinc 50..950: editorial white page, Tinos serif + Courier Prime UI, blue underlined links.
+ */
+@layer theme {
+    [data-palette='zine'] {
+        color-scheme: light;
+        --font-sans: 'Tinos', 'Times New Roman', Times, serif;
+        --font-serif: 'Tinos', 'Times New Roman', Times, serif;
+        --font-ui: 'Courier Prime', 'Courier New', Courier, monospace;
+
+        --color-zinc-50: #ffffff;
+        --color-zinc-100: #f2f2f2;
+        --color-zinc-200: #cccccc;
+        --color-zinc-300: #aaaaaa;
+        --color-zinc-400: #777777;
+        --color-zinc-500: #555555;
+        --color-zinc-600: #333333;
+        --color-zinc-700: #1a1a1a;
+        --color-zinc-800: #000000;
+        --color-zinc-900: #000000;
+        --color-zinc-950: #000000;
+
+        --color-accent: #0000ee;
+        --color-accent-content: #0000ee;
+        --color-accent-foreground: #ffffff;
+
+        --radius-xs: 0;
+        --radius-sm: 0;
+        --radius-md: 0;
+        --radius-lg: 0;
+        --radius-xl: 0;
+        --radius-2xl: 0;
+        --radius-3xl: 0;
+
+        --shadow-xs: none;
+        --shadow-sm: none;
+        --shadow-md: none;
+        --shadow-lg: none;
+        --shadow-xl: none;
+        --shadow-2xl: none;
+    }
+}
+
+[data-palette='zine'] .cozy-bg,
+[data-palette='zine'].cozy-bg {
+    color: #000000;
+    background-color: #ffffff;
+    background-image: none;
+}
+
+[data-palette='zine'] :is(h1, h2, h3, [data-flux-heading]) {
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+[data-palette='zine'] [data-flux-link],
+[data-palette='zine'] main a {
+    text-decoration: underline;
+}
+
+[data-palette='zine'] .totp-bar {
+    height: 0.75rem;
+    border: 1px solid #000000;
+    border-radius: 0;
+    background: #ffffff;
+}
+
+[data-palette='zine'] .totp-fill {
+    border-radius: 0;
+    background: #000000;
+}

@@ -1,0 +1,62 @@
+/*
+ * Palette: wallstreet (Dark)
+ * Navy pinstripes, gold #d4af37, Libre Franklin, crisp small radii.
+ */
+@layer theme {
+    [data-palette='wallstreet'] {
+        color-scheme: dark;
+        --font-sans: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif;
+        --font-serif: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif;
+
+        --color-zinc-100: #f6f1e4;
+        --color-zinc-200: #e9e3d3;
+        --color-zinc-300: #d2ccbb;
+        --color-zinc-400: #dac8a6;
+        --color-zinc-500: #c2ab88;
+        --color-zinc-700: #34456b;
+        --color-zinc-800: #172342;
+        --color-zinc-900: #0f1a33;
+        --color-zinc-950: #080f21;
+
+        --color-accent: #d4af37;
+        --color-accent-content: #e6c75a;
+        --color-accent-foreground: #17120a;
+
+        --radius-xs: 1px;
+        --radius-sm: 2px;
+        --radius-md: 3px;
+        --radius-lg: 4px;
+        --radius-xl: 6px;
+        --radius-2xl: 8px;
+
+        --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+        --shadow-md: 0 2px 6px rgb(0 0 0 / 0.45);
+        --shadow-lg: 0 6px 14px rgb(0 0 0 / 0.5);
+    }
+}
+
+[data-palette='wallstreet'] .cozy-bg,
+[data-palette='wallstreet'].cozy-bg {
+    color: var(--color-zinc-100);
+    background-color: var(--color-zinc-900);
+    background-image:
+        repeating-linear-gradient(90deg, transparent 0 27px, rgb(246 241 228 / 0.025) 27px 28px),
+        radial-gradient(ellipse 90% 50% at 50% 0%, rgb(212 175 55 / 0.06), transparent 70%);
+}
+
+[data-palette='wallstreet'] ::selection {
+    background: #d4af37;
+    color: #17120a;
+}
+
+[data-palette='wallstreet'] .totp-bar {
+    height: 0.5rem;
+    border: 1px solid var(--color-zinc-700);
+    border-radius: 2px;
+    background: var(--color-zinc-950);
+}
+
+[data-palette='wallstreet'] .totp-fill {
+    border-radius: 1px;
+    background: linear-gradient(90deg, #a8861f, #e6c75a);
+}

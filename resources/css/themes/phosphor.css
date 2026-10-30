@@ -1,0 +1,72 @@
+/*
+ * Palette: phosphor (Dark)
+ * Green phosphor #33ff66 CRT terminal, IBM Plex Mono + VT323, scanlines & glow.
+ */
+@layer theme {
+    [data-palette='phosphor'] {
+        color-scheme: dark;
+        --font-sans: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+        --font-serif: 'VT323', 'IBM Plex Mono', ui-monospace, monospace;
+        --font-ui: 'VT323', 'IBM Plex Mono', ui-monospace, monospace;
+        --font-ui-adjust: 0.52;
+
+        --crt-glow: 51 255 102;
+        --color-white: #8dffa8;
+
+        --color-zinc-100: #8dffa8;
+        --color-zinc-200: #66ff8a;
+        --color-zinc-300: #3fe468;
+        --color-zinc-400: #2fb24f;
+        --color-zinc-500: #258c3e;
+        --color-zinc-700: #0f4a22;
+        --color-zinc-800: #04170a;
+        --color-zinc-900: #020f06;
+        --color-zinc-950: #010802;
+
+        --color-accent: #33ff66;
+        --color-accent-content: #66ff8a;
+        --color-accent-foreground: #021408;
+
+        --radius-xs: 0;
+        --radius-sm: 0;
+        --radius-md: 0;
+        --radius-lg: 0;
+        --radius-xl: 0;
+        --radius-2xl: 0;
+        --radius-3xl: 0;
+
+        --shadow-xs: none;
+        --shadow-sm: none;
+        --shadow-md: none;
+        --shadow-lg: 0 0 12px rgb(var(--crt-glow) / 0.18);
+        --shadow-xl: 0 0 16px rgb(var(--crt-glow) / 0.2);
+        --shadow-2xl: 0 0 20px rgb(var(--crt-glow) / 0.22);
+    }
+}
+
+[data-palette='phosphor'] .cozy-bg,
+[data-palette='phosphor'].cozy-bg {
+    color: var(--color-zinc-100);
+    background-color: var(--color-zinc-900);
+    background-image:
+        repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgb(0 0 0 / 0.22) 3px),
+        radial-gradient(ellipse 90% 60% at 50% 0%, rgb(var(--crt-glow) / 0.09), transparent 70%);
+    text-shadow: 0 0 5px rgb(var(--crt-glow) / 0.3);
+}
+
+[data-palette='phosphor'] .cozy-bg svg,
+[data-palette='phosphor'].cozy-bg svg {
+    filter: drop-shadow(0 0 5px rgb(var(--crt-glow) / 0.5));
+}
+
+[data-palette='phosphor'] .totp-bar {
+    height: 0.75rem;
+    border: 1px solid var(--color-zinc-700);
+    border-radius: 0;
+    background: var(--color-zinc-950);
+}
+
+[data-palette='phosphor'] .totp-fill {
+    border-radius: 0;
+    background: repeating-linear-gradient(90deg, var(--color-accent) 0 6px, transparent 6px 8px);
+}

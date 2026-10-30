@@ -1,0 +1,3 @@
+Righteous
+License: OFL-1.1 (SIL Open Font License 1.1) — Astigmatic
+Bundled locally for offline/self-hosted Vaulta themes (zero runtime CDN requests).

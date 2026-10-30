@@ -1,0 +1,85 @@
+/*
+ * Palette: desk95 (Light)
+ * Overrides zinc 50..950: silver surfaces, navy #000080, raised & sunken inset bevels.
+ */
+@layer theme {
+    [data-palette='desk95'] {
+        color-scheme: light;
+        --font-sans: 'Public Sans', Tahoma, 'MS Sans Serif', ui-sans-serif, system-ui, sans-serif;
+        --font-serif: 'Public Sans', Tahoma, ui-sans-serif, sans-serif;
+
+        --color-zinc-50: #c0c0c0;
+        --color-zinc-100: #dfdfdf;
+        --color-zinc-200: #808080;
+        --color-zinc-300: #808080;
+        --color-zinc-400: #5a5a5a;
+        --color-zinc-500: #404040;
+        --color-zinc-600: #202020;
+        --color-zinc-700: #101010;
+        --color-zinc-800: #000000;
+        --color-zinc-900: #000000;
+        --color-zinc-950: #000000;
+
+        --color-accent: #000080;
+        --color-accent-content: #000080;
+        --color-accent-foreground: #ffffff;
+
+        --radius-xs: 0;
+        --radius-sm: 0;
+        --radius-md: 0;
+        --radius-lg: 0;
+        --radius-xl: 0;
+        --radius-2xl: 0;
+        --radius-3xl: 0;
+
+        --shadow-xs: none;
+        --shadow-sm: none;
+        --shadow-md: none;
+        --shadow-lg: none;
+        --shadow-xl: none;
+        --shadow-2xl: none;
+    }
+}
+
+[data-palette='desk95'] .cozy-bg,
+[data-palette='desk95'].cozy-bg {
+    color: #000000;
+    background-color: #c0c0c0;
+    background-image: none;
+}
+
+[data-palette='desk95'] [data-flux-button]:not(.bg-transparent),
+[data-palette='desk95'] dialog,
+[data-palette='desk95'] [popover] {
+    border: 0;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+}
+
+[data-palette='desk95'] [data-flux-button]:not(.bg-transparent):active {
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+}
+
+[data-palette='desk95'] :is(input, textarea, select):not([type='checkbox'], [type='radio'], [type='file']) {
+    border: 0;
+    background: #ffffff;
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+}
+
+[data-palette='desk95'] ::selection {
+    background: #000080;
+    color: #ffffff;
+}
+
+[data-palette='desk95'] .totp-bar {
+    height: 1rem;
+    border-radius: 0;
+    background: #ffffff;
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+}
+
+[data-palette='desk95'] .totp-fill {
+    margin: 2px;
+    height: calc(100% - 4px);
+    border-radius: 0;
+    background: repeating-linear-gradient(90deg, #000080 0 8px, transparent 8px 10px);
+}

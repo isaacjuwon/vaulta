@@ -1,0 +1,82 @@
+/*
+ * Palette: mac (Light)
+ * Overrides zinc 50..950: System 6/7 crisp 1-bit monochrome, dotted desktop, hard shadows.
+ */
+@layer theme {
+    [data-palette='mac'] {
+        color-scheme: light;
+        --font-sans: 'Public Sans', 'Geneva', 'Verdana', ui-sans-serif, system-ui, sans-serif;
+        --font-serif: 'Pixelify Sans', 'Chicago', ui-monospace, monospace;
+        --font-ui: 'Pixelify Sans', 'Chicago', ui-monospace, monospace;
+
+        --color-zinc-50: #ffffff;
+        --color-zinc-100: #f1f1f1;
+        --color-zinc-200: #d9d9d9;
+        --color-zinc-300: #b8b8b8;
+        --color-zinc-400: #7a7a7a;
+        --color-zinc-500: #555555;
+        --color-zinc-600: #333333;
+        --color-zinc-700: #1a1a1a;
+        --color-zinc-800: #000000;
+        --color-zinc-900: #000000;
+        --color-zinc-950: #000000;
+
+        --color-accent: #000000;
+        --color-accent-content: #000000;
+        --color-accent-foreground: #ffffff;
+
+        --radius-xs: 0;
+        --radius-sm: 0;
+        --radius-md: 0;
+        --radius-lg: 0;
+        --radius-xl: 0;
+        --radius-2xl: 0;
+        --radius-3xl: 0;
+
+        --shadow-xs: none;
+        --shadow-sm: 1px 1px 0 #000000;
+        --shadow-md: 2px 2px 0 #000000;
+        --shadow-lg: 3px 3px 0 #000000;
+        --shadow-xl: 4px 4px 0 #000000;
+        --shadow-2xl: 5px 5px 0 #000000;
+    }
+}
+
+@layer base {
+    [data-palette='mac'] *,
+    [data-palette='mac'] ::after,
+    [data-palette='mac'] ::before {
+        border-color: #000000;
+    }
+
+    [data-palette='mac'] dialog {
+        border: 1px solid #000000;
+        box-shadow: 4px 4px 0 #000000;
+    }
+
+    [data-palette='mac'] ::selection {
+        background: #000000;
+        color: #ffffff;
+    }
+}
+
+[data-palette='mac'] .cozy-bg,
+[data-palette='mac'].cozy-bg {
+    color: #000000;
+    background-color: #ffffff;
+    background-image: radial-gradient(#000000 0.6px, transparent 0.7px);
+    background-size: 4px 4px;
+    background-attachment: fixed;
+}
+
+[data-palette='mac'] .totp-bar {
+    height: 0.75rem;
+    border: 1px solid #000000;
+    border-radius: 0;
+    background: #ffffff;
+}
+
+[data-palette='mac'] .totp-fill {
+    border-radius: 0;
+    background: repeating-linear-gradient(135deg, #000000 0 3px, #ffffff 3px 5px);
+}

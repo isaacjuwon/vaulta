@@ -1,0 +1,46 @@
+/*
+ * Palette: ferrite (Default — Dark)
+ * Warm graphite surfaces, cream text, tape-oxide rust accent, JetBrains Mono.
+ */
+@layer theme {
+    .dark,
+    [data-palette='ferrite'] {
+        color-scheme: dark;
+        --font-sans: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+        --font-serif: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+        --color-zinc-50: #fbf6ec;
+        --color-zinc-100: #f4ebdb;
+        --color-zinc-200: #f6ecd8;
+        --color-zinc-300: #ecdfc4;
+        --color-zinc-400: #dac8a6;
+        --color-zinc-500: #c2ab88;
+        --color-zinc-600: #6b5845;
+        --color-zinc-700: #4a4540;
+        --color-zinc-800: #2a2724;
+        --color-zinc-900: #211f1c;
+        --color-zinc-950: #161412;
+
+        --color-accent: #e48a5e;
+        --color-accent-content: #f0a37c;
+        --color-accent-foreground: #2b1a10;
+    }
+}
+
+[data-palette='ferrite'] .cozy-bg,
+[data-palette='ferrite'].cozy-bg {
+    color: var(--color-zinc-100);
+    background-color: var(--color-zinc-800);
+    background-image: none;
+}
+
+[data-palette='ferrite'] .totp-bar {
+    height: 0.375rem;
+    border-radius: 9999px;
+    background-color: var(--color-zinc-700);
+}
+
+[data-palette='ferrite'] .totp-fill {
+    border-radius: 9999px;
+    background-color: var(--color-accent);
+}
