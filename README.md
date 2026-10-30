@@ -1,6 +1,6 @@
 # Vaulta
 
-[![PHP Version](https://img.shields.io/badge/PHP-8.3%20%7C%208.5-777BB4?logo=php&logoColor=white)](https://php.net)
+[![PHP Version](https://img.shields.io/badge/PHP-8.4%20%7C%208.5-777BB4?logo=php&logoColor=white)](https://php.net)
 [![Laravel Framework](https://img.shields.io/badge/Laravel-13.x-FF2D20?logo=laravel&logoColor=white)](https://laravel.com)
 [![Livewire](https://img.shields.io/badge/Livewire-4.x%20SFC-FB70A9?logo=livewire&logoColor=white)](https://livewire.laravel.com)
 [![Flux UI](https://img.shields.io/badge/Flux%20UI-v2-4F46E5)](https://fluxui.dev)
@@ -40,7 +40,7 @@ Vaulta is a self-hosted, sovereign 2FA authenticator vault engineered for high s
 
 ## Requirements
 
-- PHP **8.3+** (developed and verified on PHP **8.5**) with `mbstring`, `openssl`, `pdo_sqlite` (or `pdo_mysql` / `pdo_pgsql`)
+- PHP **8.4+** (developed and verified on PHP **8.5**) with `mbstring`, `openssl`, `pdo_sqlite` (or `pdo_mysql` / `pdo_pgsql`)
 - Composer 2.x
 - Node.js 22+ & npm
 
