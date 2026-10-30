@@ -71,8 +71,7 @@ php artisan vaulta:check
 ## Artisan Commands
 
 - `php artisan vaulta:check` — Verify environment, `APP_KEY`, database connectivity, and decryptability of every stored authenticator.
-- `php artisan vaulta:grant-admin user@example.com` (or `--revoke`) — Promote or demote an administrator from the CLI.
-- `php artisan vaulta:import-wellto /path/to/wellto/database.sqlite --old-key="base64:..."` — Re-encrypt and import users and authenticators from a legacy `wellto.io` SQLite database (`--dry-run` supported).
+
 
 ## Quality Gates
 
